@@ -1,7 +1,20 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/ssr-apis/
- */
+const React = require("react")
+const { CartProvider } = require("use-shopping-cart")
+const { loadStripe } = require("@stripe/stripe-js")
 
-// You can delete this file if you're not using it
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
+
+export const wrapRootElement = ({ element }) => {
+  return (
+    <CartProvider
+      stripe={stripePromise}
+      successUrl={`http://localhost:8000`}
+      cancelUrl={`http://localhost:8000`}
+      currency={"JPY"}
+      allowedCountries={["JP"]}
+      billingAddressCollection={true}
+    >
+      {element}
+    </CartProvider>
+  )
+}

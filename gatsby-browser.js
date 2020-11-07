@@ -1,7 +1,21 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+const React = require("react")
+const { CartProvider } = require("use-shopping-cart")
+const { loadStripe } = require("@stripe/stripe-js")
 
-// You can delete this file if you're not using it
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
+
+export const wrapRootElement = ({ element }) => {
+  return (
+    <CartProvider
+      stripe={stripePromise}
+      successUrl={`http://localhost:8000/`}
+      cancelUrl={`http://localhost:8000`}
+      currency={"JPY"}
+      allowedCountries={["JP"]}
+      billingAddressCollection={true}
+      mode={"client-only"}
+    >
+      {element}
+    </CartProvider>
+  )
+}
