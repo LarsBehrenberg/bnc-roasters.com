@@ -6,6 +6,16 @@ const Container = styled.section`
   gap: 1rem;
 `
 
-const ProductList = ({ children }) => <Container>{children}</Container>
+const Spacer = styled.div`
+  width: 100%;
+  height: 40vh;
+`
+
+const ProductList = ({ children }) => (
+  <>
+    <Spacer />
+    <Container>{children}</Container>
+  </>
+)
 
 export default ProductList
