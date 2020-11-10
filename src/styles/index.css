@@ -1,3 +1,9 @@
+/* Base CSS */
+html {
+    background: #040e18;
+}
+
+/* Background Image and Shading */
 .background_image {
     position: fixed !important;
     top: 0;

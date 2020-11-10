@@ -55,6 +55,10 @@ const CheckoutLink = styled(Link)`
 const Title = styled.h1`
   text-align: center;
   letter-spacing: 0.2em;
+
+  @media screen and (max-width: 450px) {
+    display: none;
+  }
 `
 
 const LogoContainer = styled(Link)`
