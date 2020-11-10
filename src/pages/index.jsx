@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import { Layout, SEO } from "layout"
 
-import { ProductCard, ProductList } from "components"
+import { ProductCard, ProductList, Intro } from "components"
 
 const IndexPage = ({ data }) => {
   const productData = data.products.nodes.map(node => ({
@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-
+      <Intro />
       {/* Renders the products */}
       <ProductList>
         {productData.map(product => (

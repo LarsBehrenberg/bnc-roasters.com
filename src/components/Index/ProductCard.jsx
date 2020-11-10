@@ -6,8 +6,9 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 const StyledLink = styled(Link)`
-  min-width: 350px;
   min-height: 250px;
+  flex-grow: 1;
+  flex-basis: 0;
   border-radius: 2em;
   text-decoration: none;
 
@@ -32,6 +33,12 @@ const StyledLink = styled(Link)`
     align-items: flex-end;
     justify-content: space-between;
     color: white;
+
+    @media screen and (max-width: 550px) {
+      margin-top: auto;
+      position: absolute;
+      bottom: 0;
+    }
 
     * {
       margin: 0;
