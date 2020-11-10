@@ -6,7 +6,7 @@ import Background from "./Background"
 import "normalize.css"
 import "../styles/index.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backgroundImage }) => {
   return (
     <div style={{ position: "relative" }}>
       <Header siteTitle={`BnC Roasters`} />
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer> */}
       </div>
-      <Background />
+      <Background image={backgroundImage} />
     </div>
   )
 }

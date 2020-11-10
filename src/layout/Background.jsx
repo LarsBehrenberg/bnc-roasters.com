@@ -11,13 +11,13 @@ const BackgroundShadow = styled.div`
   right: 0;
   left: 0;
   z-index: -1;
-  background: #00000020;
+  background: #00000060;
 `
 
-const Background = () => {
+const Background = ({ image }) => {
   const data = useStaticQuery(query)
 
-  const imageData = data.file.childImageSharp.fluid
+  const imageData = image || data.file.childImageSharp.fluid
 
   return (
     <BackgroundImage

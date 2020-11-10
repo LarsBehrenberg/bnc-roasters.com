@@ -92,7 +92,7 @@ export default function ProductCard({ product }) {
   // })
 
   return (
-    <StyledLink to="">
+    <StyledLink to={`/${product.slug}`}>
       <div className="product_card_content">
         {/* Product name */}
         <h3>{product.name}</h3>

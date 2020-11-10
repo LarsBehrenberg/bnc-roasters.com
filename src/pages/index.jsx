@@ -12,6 +12,10 @@ const IndexPage = ({ data }) => {
     price: node.unit_amount,
     image: node.product.images[0],
     currency: "JPY",
+    slug: node.product.name
+      .toLowerCase()
+      .replace(/[^\w ]+/g, "")
+      .replace(/ +/g, "-"),
   }))
 
   return (
