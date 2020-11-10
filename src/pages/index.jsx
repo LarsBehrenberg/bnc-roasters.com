@@ -7,12 +7,12 @@ import { ProductCard, ProductList } from "components"
 
 const IndexPage = ({ data }) => {
   const productData = data.products.nodes.map(node => ({
-    name: node.product.name,
+    name: node.name,
     sku: node.id,
-    price: node.unit_amount,
-    image: node.product.images[0],
-    currency: "JPY",
-    slug: node.product.name
+    // price: node.unit_amount,
+    image: node.image[0],
+    // currency: "JPY",
+    slug: node.name
       .toLowerCase()
       .replace(/[^\w ]+/g, "")
       .replace(/ +/g, "-"),
@@ -36,14 +36,16 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPage {
-    products: allStripePrice {
+    products: allStripeProduct {
       nodes {
-        unit_amount
         id
-        product {
-          name
-          description
-          images
+        name
+        image: localFiles {
+          childImageSharp {
+            fluid(maxWidth: 400) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }
