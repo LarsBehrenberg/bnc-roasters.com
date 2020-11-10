@@ -1,11 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { useShoppingCart } from "use-shopping-cart"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { Layout, SEO } from "layout"
 
-import { CartItems, ProductCard, ProductList } from "components"
+import { ProductCard, ProductList } from "components"
 
 const IndexPage = ({ data }) => {
   const productData = data.products.nodes.map(node => ({
@@ -15,8 +13,6 @@ const IndexPage = ({ data }) => {
     image: node.product.images[0],
     currency: "JPY",
   }))
-
-  const { totalPrice, redirectToCheckout, cartCount } = useShoppingCart()
 
   return (
     <Layout>
@@ -28,14 +24,6 @@ const IndexPage = ({ data }) => {
           <ProductCard key={product.sku} product={product} />
         ))}
       </ProductList>
-
-      {/* This is where we'll render our cart */}
-      <p>Number of Items: {cartCount}</p>
-      <p>Total: ¥{totalPrice}</p>
-      <CartItems />
-
-      {/* Redirects the user to Stripe */}
-      <button onClick={() => redirectToCheckout()}>Checkout</button>
     </Layout>
   )
 }
