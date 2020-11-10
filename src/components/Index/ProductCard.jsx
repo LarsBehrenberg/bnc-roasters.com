@@ -23,6 +23,10 @@ const StyledLink = styled(Link)`
 
   &:hover {
     transform: scale(1.03);
+
+    .product_card_link {
+      background: #ffffff80;
+    }
   }
 
   .product_card_content {
@@ -44,17 +48,13 @@ const StyledLink = styled(Link)`
       margin: 0;
     }
 
-    a {
+    span {
       margin-bottom: -0.4em;
       padding: 0.6em 0.7em 0.5em 0.6em;
       border-radius: 10px;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease-out;
-
-      &:hover {
-        background: #ffffff80;
-      }
     }
   }
 
@@ -100,7 +100,7 @@ export default function ProductCard({ product }) {
         {/* Product name */}
         <h3>{product.name}</h3>
         {/* Adds product to the cart */}
-        <Link to={`/${product.slug}`}>
+        <span className="product_card_link" to={`/${product.slug}`}>
           <svg
             width="25"
             height="25"
@@ -111,19 +111,19 @@ export default function ProductCard({ product }) {
             <path
               d="M5.28156 12.15H19.2816"
               stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M12.2816 5.15001L19.2816 12.15L12.2816 19.15"
               stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
-        </Link>
+        </span>
       </div>
 
       {/* Background image */}
