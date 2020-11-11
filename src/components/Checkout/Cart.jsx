@@ -10,7 +10,9 @@ const CartContainer = styled.section`
     font-size: 2.5em;
     margin-bottom: 0;
 
-    margin-left: 0.8em;
+    @media screen and (min-width: 600px) {
+      margin-left: 0.8em;
+    }
   }
 
   .checkout_table_price_header {
@@ -20,6 +22,9 @@ const CartContainer = styled.section`
 
     span {
       margin-right: 2em;
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
     }
   }
 `
