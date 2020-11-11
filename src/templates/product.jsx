@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import { Layout, SEO } from "layout"
+import { Description } from "components"
 
 const Product = ({ data }) => {
   const {
@@ -12,11 +13,20 @@ const Product = ({ data }) => {
 
   const { image } = data.productImage
 
-  console.log(image)
+  const productInfo = {
+    id,
+    price,
+    name,
+    image,
+  }
 
   return (
-    <Layout backgroundImage={image[0].childImageSharp.fluid}>
+    <Layout
+      backgroundImage={image[0].childImageSharp.fluid}
+      backgroundClassName="product_page"
+    >
       <SEO title={name} />
+      <Description product={productInfo} />
     </Layout>
   )
 }

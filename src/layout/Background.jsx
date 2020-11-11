@@ -14,7 +14,7 @@ const BackgroundShadow = styled.div`
   background: #00000060;
 `
 
-const Background = ({ image }) => {
+const Background = ({ image, className = "" }) => {
   const data = useStaticQuery(query)
 
   const imageData = image || data.file.childImageSharp.fluid
@@ -23,10 +23,10 @@ const Background = ({ image }) => {
     <BackgroundImage
       Tag="section"
       fluid={imageData}
-      className="background_image"
+      className={`background_image ${className}`}
       backgroundColor={`#040e18`}
     >
-      <BackgroundShadow />
+      <BackgroundShadow className="background_image_shadow" />
     </BackgroundImage>
   )
 }

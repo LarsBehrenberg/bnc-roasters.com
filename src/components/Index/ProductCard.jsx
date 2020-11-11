@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 
   position: relative;
 
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 
   &,
   * {
@@ -23,6 +23,7 @@ const StyledLink = styled(Link)`
 
   &:hover {
     transform: scale(1.03);
+    box-shadow: 0 40px 45px rgba(0, 0, 0, 0.1);
 
     .product_card_link {
       background: #ffffff80;

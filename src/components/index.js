@@ -6,4 +6,7 @@ export { default as ProductList } from "./Index/ProductList"
 export { default as Intro } from "./Index/Intro"
 
 // Checkout
-export { default as CartItems } from "./Checkout/CartItems"
+export { default as Cart } from "./Checkout/Cart"
+
+// Product
+export { default as Description } from "./Product/Description"

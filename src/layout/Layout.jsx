@@ -7,7 +7,7 @@ import Footer from "./Footer"
 import "normalize.css"
 import "../styles/index.css"
 
-const Layout = ({ children, backgroundImage }) => {
+const Layout = ({ children, backgroundImage, backgroundClassName }) => {
   return (
     <>
       <Header siteTitle={`BnC Roasters`} />
@@ -31,7 +31,7 @@ const Layout = ({ children, backgroundImage }) => {
 
         <Footer />
       </div>
-      <Background image={backgroundImage} />
+      <Background image={backgroundImage} className={backgroundClassName} />
     </>
   )
 }
