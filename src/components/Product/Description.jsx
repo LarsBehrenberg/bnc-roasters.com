@@ -4,11 +4,14 @@ import styled from "@emotion/styled"
 import { useShoppingCart } from "use-shopping-cart"
 import { navigate } from "gatsby"
 
+import { BackButton } from "components"
+
 const Container = styled.div`
   max-width: 550px;
   margin-left: auto;
+  margin-top: 2rem;
   color: #fff;
-  min-height: 65vh;
+  min-height: 64vh;
 
   h1 {
     margin-bottom: 0;
@@ -65,6 +68,7 @@ const Description = ({ product }) => {
 
   return (
     <Container>
+      <BackButton />
       <h1>{product.name}</h1>
       <h5>{`¥${product.price} / 200g`}</h5>
       <p>

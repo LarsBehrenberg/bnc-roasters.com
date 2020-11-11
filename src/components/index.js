@@ -1,4 +1,5 @@
 // Common
+export { default as BackButton } from "./Common/BackButton"
 
 // Index
 export { default as ProductCard } from "./Index/ProductCard"
