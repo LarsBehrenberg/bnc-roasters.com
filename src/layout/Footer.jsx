@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
+import Logo from "../images/logo_white.png"
 
 const Container = styled.footer`
   margin-top: 3rem;
@@ -27,6 +28,17 @@ const Container = styled.footer`
 
 const Copyright = styled.div`
   z-index: 1;
+
+  img {
+    width: 30px;
+    margin-bottom: -6px;
+    margin-right: 10px;
+  }
+
+  span {
+    border-left: 1px solid #fff;
+    padding-left: 10px;
+  }
 `
 
 const FooterMenu = styled.div`
@@ -60,12 +72,15 @@ const Footer = () => {
   return (
     <Container>
       <Copyright>
-        <span>BnC Roasters</span>
+        <img src={Logo} alt="BnC Coffee Roaster" />
+        <span>&copy; 2020 BnC Roasters</span>
       </Copyright>
       <FooterMenu>
         <Link to="/">Home</Link>
         <Link to="/legal">Legal</Link>
-        <Link to="/contact">Contact</Link>
+        <a href="mailto:info@larsbehrenberg.com" className="mailtoui">
+          Contact
+        </a>
       </FooterMenu>
       <Shadow />
     </Container>

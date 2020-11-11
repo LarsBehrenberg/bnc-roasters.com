@@ -1,3 +1,4 @@
+import MailtoUI from "./node_modules/mailtoui/dist/mailtoui-min.js"
 const React = require("react")
 const { CartProvider } = require("use-shopping-cart")
 const { loadStripe } = require("@stripe/stripe-js")
@@ -18,4 +19,16 @@ export const wrapRootElement = ({ element }) => {
       {element}
     </CartProvider>
   )
+}
+
+export const onRouteUpdate = () => {
+  MailtoUI.run({
+    title: "問い合わせ",
+    buttonText1: "Gmailを開ける",
+    buttonText2: "Outlookを開ける",
+    buttonText3: "Yahooを開ける",
+    buttonText4: "デフォルトのメールアプリを開ける",
+    buttonTextCopy: "コピー",
+    buttonTextCopyAction: "コピーしました！",
+  })
 }

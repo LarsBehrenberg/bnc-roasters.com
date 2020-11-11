@@ -5,6 +5,7 @@ import styled from "@emotion/styled"
 
 const CartContainer = styled.section`
   color: #fff;
+  min-height: 65vh;
   .checkout_title {
     font-size: 2.5em;
     margin-bottom: 0;
