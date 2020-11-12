@@ -51,8 +51,6 @@ const AddToCartButton = styled.button`
 const Description = ({ product }) => {
   const { addItem } = useShoppingCart()
 
-  console.log(product)
-
   const item = {
     name: product.name,
     sku: product.id, // price id

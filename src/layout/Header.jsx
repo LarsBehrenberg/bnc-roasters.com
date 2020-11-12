@@ -68,7 +68,7 @@ const LogoContainer = styled(Link)`
 `
 
 const Header = ({ siteTitle }) => {
-  const { redirectToCheckout, cartCount } = useShoppingCart()
+  const { cartCount } = useShoppingCart()
 
   return (
     <header>

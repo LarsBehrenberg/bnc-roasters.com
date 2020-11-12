@@ -98,13 +98,15 @@ export default function Items() {
   for (const sku in cartDetails) {
     const cartEntry = cartDetails[sku]
 
-    console.log("items: ", cartEntry)
-    console.log("cart: ", cartDetails)
-
     // To set value with dropdown
     const options = []
-    for (let quantity = 1; quantity <= 20; ++quantity)
-      options.push(<option value={quantity}>{`Quantity: ${quantity}`}</option>)
+    for (let quantity = 1; quantity <= 5; ++quantity)
+      options.push(
+        <option
+          key={quantity}
+          value={quantity}
+        >{`Quantity: ${quantity}`}</option>
+      )
 
     // all of your basic product data still exists (i.e. name, image, price)
     cart.push(
@@ -119,11 +121,14 @@ export default function Items() {
 
           <div className="checkout_item_text">
             <h2>{cartEntry.name}</h2>
-            <h5>{`200g / ¥${cartEntry.price}`}</h5>
+            <h5>{`¥${cartEntry.price} / 200g`}</h5>
             <select
               id="quantity-select"
               className="checkout_item_select"
               defaultValue={cartEntry.quantity}
+              onBlur={event => {
+                setItemQuantity(sku, event.target.value)
+              }}
               onChange={event => {
                 setItemQuantity(sku, event.target.value)
               }}

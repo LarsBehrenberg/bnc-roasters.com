@@ -8,7 +8,7 @@ const Product = ({ data }) => {
   const {
     id,
     price,
-    product: { name, description },
+    product: { name },
   } = data.productInfo
 
   const { image } = data.productImage
@@ -40,7 +40,6 @@ export const query = graphql`
       price: unit_amount
       product {
         name
-        description
       }
     }
     productImage: stripeProduct(name: { eq: $pathSlug }) {

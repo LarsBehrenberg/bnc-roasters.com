@@ -24,10 +24,10 @@ export const wrapRootElement = ({ element }) => {
 export const onRouteUpdate = () => {
   MailtoUI.run({
     title: "問い合わせ",
-    buttonText1: "Gmailを開ける",
-    buttonText2: "Outlookを開ける",
-    buttonText3: "Yahooを開ける",
-    buttonText4: "デフォルトのメールアプリを開ける",
+    buttonText1: "Gmailを開く",
+    buttonText2: "Outlookを開く",
+    buttonText3: "Yahooを開く",
+    buttonText4: "デフォルトのメールアプリを開く",
     buttonTextCopy: "コピー",
     buttonTextCopyAction: "コピーしました！",
   })

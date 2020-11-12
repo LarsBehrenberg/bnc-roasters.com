@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "@emotion/styled"
-
-import { useShoppingCart } from "use-shopping-cart"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
@@ -86,15 +84,6 @@ const StyledLink = styled(Link)`
 `
 
 export default function ProductCard({ product }) {
-  const { addItem } = useShoppingCart()
-
-  /* A helper function that turns the price into a readable format */
-  // const price = formatCurrencyString({
-  //   value: product.price,
-  //   currency: product.currency,
-  //   language: navigator.language,
-  // })
-
   return (
     <StyledLink to={`/${product.slug}`}>
       <div className="product_card_content">
