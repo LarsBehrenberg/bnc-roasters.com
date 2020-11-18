@@ -31,6 +31,13 @@ const Container = styled.div`
     margin: 0 0 1em 0;
     margin-left: auto;
   }
+  select,
+  button {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background: #fff;
+  }
 
   button {
     display: inline-flex;
@@ -54,6 +61,15 @@ const Container = styled.div`
 
   select {
     margin-right: 0.5em;
+    padding: 0.2em 0.3em;
+    padding-right: 0;
+
+    outline: none;
+  }
+
+  .shipping_price_textbox {
+    margin: 1em 0;
+    line-height: 1.3em;
   }
 `
 
@@ -99,18 +115,23 @@ const Total = ({ updateShippingState, currentShippingState }) => {
         return totalPrice - cartDetails[allShippingIds[x]].price
       }
     }
+    return totalPrice
   }
+
+  console.log(
+    Object.keys(shippingOptions)[Object.keys(shippingOptions).length - 1]
+  )
 
   const addShippingFee = selectArea => {
     const currentArea = selectArea || area
     const currentCount = setCorrectCountForShipping()
     removeExisistingShippingFee()
-    setPrice(shippingOptions[currentArea][currentCount].price)
     updateShippingState(true)
     if (
-      currentArea !=
+      currentArea !==
       Object.keys(shippingOptions)[Object.keys(shippingOptions).length - 1]
     ) {
+      setPrice(shippingOptions[currentArea][currentCount].price)
       addItem({
         name: "Shipping Cost",
         sku: shippingOptions[currentArea][currentCount].id, // use sku here instead
@@ -118,6 +139,10 @@ const Total = ({ updateShippingState, currentShippingState }) => {
         currency: "JPY",
         image: "https://my-image.com/banana.jpg",
       })
+    } else if (
+      currentArea ===
+      Object.keys(shippingOptions)[Object.keys(shippingOptions).length - 1]
+    ) {
     }
   }
 
@@ -151,12 +176,26 @@ const Total = ({ updateShippingState, currentShippingState }) => {
         ))}
       </select>
       <button onClick={() => addShippingFee()}>Calculate</button>
-      {currentShippingState ? (
-        <p>Your shipping fee: ¥{price.toLocaleString()}</p>
-      ) : (
-        <p>Please calculate your shipping fee first</p>
-      )}
-
+      <div className="shipping_price_textbox">
+        {currentShippingState ? (
+          area !==
+          Object.keys(shippingOptions)[
+            Object.keys(shippingOptions).length - 1
+          ] ? (
+            <p>Your shipping fee: ¥{price.toLocaleString()}</p>
+          ) : (
+            <p>
+              Localy Delivery in Haramura/Fujimi is free. <br /> Please contact
+              us for this under{" "}
+              <a href="mailto:bearandgirl@gmail.com" style={{ color: "white" }}>
+                bearandgirl@gmail.com
+              </a>
+            </p>
+          )
+        ) : (
+          <p>Please calculate your shipping fee first</p>
+        )}
+      </div>
       <button onClick={() => toCheckout()}>
         <svg
           width="20"
