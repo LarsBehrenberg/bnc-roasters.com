@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Items from "./Items"
 import Total from "./Total"
 import styled from "@emotion/styled"
@@ -30,14 +30,19 @@ const CartContainer = styled.section`
 `
 
 const Cart = () => {
+  const [shippingState, setShippingState] = useState(false)
+
   return (
     <CartContainer>
       <h1 className="checkout_title">Your current cart:</h1>
       <p className="checkout_table_price_header">
         <span>Price</span>
       </p>
-      <Items />
-      <Total />
+      <Items updateShippingState={state => setShippingState(state)} />
+      <Total
+        updateShippingState={state => setShippingState(state)}
+        currentShippingState={shippingState}
+      />
     </CartContainer>
   )
 }

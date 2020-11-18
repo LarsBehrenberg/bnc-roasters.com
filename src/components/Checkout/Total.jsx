@@ -1,15 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { useShoppingCart } from "use-shopping-cart"
+import { shippingOptions, allShippingIds } from "./shipping"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Container = styled.div`
-  max-width: 260px;
   margin-left: auto;
   padding-right: 2em;
-  padding-top: 1em;
   text-align: right;
 
-  border-top: 2px solid #fff;
+  .total_divider {
+    width: 100%;
+    max-width: 280px;
+    height: 1px;
+    border-top: 2px solid #fff;
+    margin: 0 0 1em 0;
+    margin-left: auto;
+  }
 
   button {
     display: inline-flex;
@@ -30,14 +37,107 @@ const Container = styled.div`
       margin-right: 10px;
     }
   }
+
+  select {
+    margin-right: 0.5em;
+  }
 `
 
-const Total = () => {
-  const { totalPrice, redirectToCheckout } = useShoppingCart()
+const Total = ({ updateShippingState, currentShippingState }) => {
+  const {
+    totalPrice,
+    addItem,
+    removeItem,
+    cartDetails,
+    cartCount,
+  } = useShoppingCart()
+
+  const [area, setArea] = useState(Object.keys(shippingOptions)[0])
+  const [price, setPrice] = useState(0)
+
+  const removeExisistingShippingFee = () => {
+    for (let x = 0; x < allShippingIds.length; x++) {
+      if (cartDetails[allShippingIds[x]] !== undefined) {
+        removeItem(allShippingIds[x])
+      }
+    }
+  }
+
+  const setCorrectCountForShipping = () => {
+    let count = 0
+    if (cartCount >= 11) {
+      count = 10
+    } else if (cartCount >= 6) {
+      count = 5
+    } else if (cartCount >= 4) {
+      count = 3
+    } else {
+      count = 2
+    }
+    return count
+  }
+
+  const newTotalPrice = () => {
+    for (let x = 0; x < allShippingIds.length; x++) {
+      if (cartDetails[allShippingIds[x]] !== undefined) {
+        return totalPrice - cartDetails[allShippingIds[x]].price
+      }
+    }
+  }
+
+  const addShippingFee = selectArea => {
+    const currentArea = selectArea || area
+    const currentCount = setCorrectCountForShipping()
+    removeExisistingShippingFee()
+    setPrice(shippingOptions[currentArea][currentCount].price)
+    updateShippingState(true)
+    if (
+      currentArea !=
+      Object.keys(shippingOptions)[Object.keys(shippingOptions).length - 1]
+    ) {
+      addItem({
+        name: "Shipping Cost",
+        sku: shippingOptions[currentArea][currentCount].id, // use sku here instead
+        price: shippingOptions[currentArea][currentCount].price,
+        currency: "JPY",
+        image: "https://my-image.com/banana.jpg",
+      })
+    }
+  }
+
+  const toCheckout = () => {
+    console.log("clicked to checkout")
+  }
+
   return (
     <Container>
-      <h2>{`Total: ¥${totalPrice.toLocaleString()}`}</h2>
-      <button onClick={() => redirectToCheckout()}>
+      <div className="total_divider" />
+      <h2>{`Total: ¥${newTotalPrice().toLocaleString()}`}</h2>
+      <select
+        name="shipping-select"
+        id="shipping-select"
+        defaultValue={Object.keys(shippingOptions)[0]}
+        onBlur={event => {
+          setArea(event.target.value)
+          updateShippingState(false)
+        }}
+        onChange={event => {
+          setArea(event.target.value)
+          updateShippingState(false)
+        }}
+      >
+        {Object.keys(shippingOptions).map(option => (
+          <option key={option} value={option}>{`${option}`}</option>
+        ))}
+      </select>
+      <button onClick={() => addShippingFee()}>Calculate</button>
+      {currentShippingState ? (
+        <p>Your shipping fee: ¥{price.toLocaleString()}</p>
+      ) : (
+        <p>Please calculate your shipping fee first</p>
+      )}
+
+      <button onClick={() => toCheckout()}>
         <svg
           width="20"
           height="20"

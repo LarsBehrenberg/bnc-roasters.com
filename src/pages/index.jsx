@@ -36,7 +36,7 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPage {
-    products: allStripeProduct {
+    products: allStripeProduct(filter: { id: { ne: "prod_IOOC16S3x0U5pB" } }) {
       nodes {
         id
         name

@@ -90,8 +90,14 @@ const Placeholder = styled.h3`
   }
 `
 
-export default function Items() {
+const Items = ({ updateShippingState }) => {
   const { cartDetails, removeItem, setItemQuantity } = useShoppingCart()
+
+  const setItem = (sku, event, state) => {
+    updateShippingState(state)
+
+    setItemQuantity(sku, event)
+  }
 
   const cart = []
   // Note: Object.keys().map() takes 2x as long as a for-in loop
@@ -109,49 +115,51 @@ export default function Items() {
       )
 
     // all of your basic product data still exists (i.e. name, image, price)
-    cart.push(
-      <ItemContainer key={cartEntry.name}>
-        <div className="checkout_item_info">
-          <div className="checkout_item_image_container">
-            <Img
-              fluid={cartEntry.image[0].childImageSharp.fluid}
-              alt={`Image of ${cartEntry.name}`}
-            />
+    if (cartEntry.name !== "Shipping Cost") {
+      cart.push(
+        <ItemContainer key={cartEntry.name}>
+          <div className="checkout_item_info">
+            <div className="checkout_item_image_container">
+              <Img
+                fluid={cartEntry.image[0].childImageSharp.fluid}
+                alt={`Image of ${cartEntry.name}`}
+              />
+            </div>
+
+            <div className="checkout_item_text">
+              <h2>{cartEntry.name}</h2>
+              <h5>{`¥${cartEntry.price} / 200g`}</h5>
+              <select
+                id="quantity-select"
+                className="checkout_item_select"
+                defaultValue={cartEntry.quantity}
+                onBlur={event => {
+                  setItem(sku, event.target.value, false)
+                }}
+                onChange={event => {
+                  setItem(sku, event.target.value, false)
+                }}
+              >
+                {options}
+              </select>
+
+              <button
+                onClick={() => removeItem(cartEntry.sku)}
+                aria-label={`Remove all ${cartEntry.name} from your cart`}
+              >
+                Remove
+              </button>
+            </div>
+
+            {/* What if we don't want this product at all */}
           </div>
-
-          <div className="checkout_item_text">
-            <h2>{cartEntry.name}</h2>
-            <h5>{`¥${cartEntry.price} / 200g`}</h5>
-            <select
-              id="quantity-select"
-              className="checkout_item_select"
-              defaultValue={cartEntry.quantity}
-              onBlur={event => {
-                setItemQuantity(sku, event.target.value)
-              }}
-              onChange={event => {
-                setItemQuantity(sku, event.target.value)
-              }}
-            >
-              {options}
-            </select>
-
-            <button
-              onClick={() => removeItem(cartEntry.sku)}
-              aria-label={`Remove all ${cartEntry.name} from your cart`}
-            >
-              Remove
-            </button>
+          <div className="checkout_item_price">
+            <h2>{cartEntry.formattedValue}</h2>
+            <h5>{`${cartEntry.quantity} x 200g package`}</h5>
           </div>
-
-          {/* What if we don't want this product at all */}
-        </div>
-        <div className="checkout_item_price">
-          <h2>{cartEntry.formattedValue}</h2>
-          <h5>{`${cartEntry.quantity} x 200g package`}</h5>
-        </div>
-      </ItemContainer>
-    )
+        </ItemContainer>
+      )
+    }
   }
 
   return cart.length !== 0 ? (
@@ -163,3 +171,5 @@ export default function Items() {
     </Placeholder>
   )
 }
+
+export default Items
