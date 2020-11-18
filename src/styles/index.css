@@ -23,3 +23,26 @@ html {
 .background_image.product_page .background_image_shadow {
     background: linear-gradient( to right,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.33) 100% )
 }
+
+/* Modal styling */
+.ReactModalPortal {
+
+    transition: all 3s linear;
+}
+.ReactModal__Overlay {
+    background-color: #00000050 !important;
+    transition: background-color 1s linear;
+}
+
+.ReactModal__Content {
+    max-width: 400px;
+    margin-right: -40% !important;
+    line-height: 1.6em;
+    padding-bottom: 1.8em;  
+}
+
+.ReactModal__Overlay .modal_close_button {
+    position: absolute;
+    bottom: .7em;
+    right: 1em;
+}

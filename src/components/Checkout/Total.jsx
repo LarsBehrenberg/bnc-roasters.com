@@ -1,8 +1,22 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
+import Modal from "react-modal"
 import { useShoppingCart } from "use-shopping-cart"
 import { shippingOptions, allShippingIds } from "./shipping"
-import { graphql, useStaticQuery } from "gatsby"
+
+const customStyles = {
+  content: {
+    top: "26%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    opacity: "1 !important",
+  },
+}
+
+Modal.setAppElement("#___gatsby")
 
 const Container = styled.div`
   margin-left: auto;
@@ -50,10 +64,12 @@ const Total = ({ updateShippingState, currentShippingState }) => {
     removeItem,
     cartDetails,
     cartCount,
+    redirectToCheckout,
   } = useShoppingCart()
 
   const [area, setArea] = useState(Object.keys(shippingOptions)[0])
   const [price, setPrice] = useState(0)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   const removeExisistingShippingFee = () => {
     for (let x = 0; x < allShippingIds.length; x++) {
@@ -106,7 +122,11 @@ const Total = ({ updateShippingState, currentShippingState }) => {
   }
 
   const toCheckout = () => {
-    console.log("clicked to checkout")
+    if (currentShippingState === true) {
+      redirectToCheckout()
+    } else {
+      setIsOpen(true)
+    }
   }
 
   return (
@@ -154,6 +174,25 @@ const Total = ({ updateShippingState, currentShippingState }) => {
         </svg>
         Proceed to checkout
       </button>
+      <Modal
+        isOpen={modalIsOpen}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={() => setIsOpen(false)}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2>ちょっと待って 🙋🏻‍♀️</h2>
+        <div>
+          <p>
+            計算し忘れないで 🧮
+            <br />
+            購入前に、送料を計算して下さい！
+          </p>
+        </div>
+        <button className="modal_close_button" onClick={() => setIsOpen(false)}>
+          戻る
+        </button>
+      </Modal>
     </Container>
   )
 }

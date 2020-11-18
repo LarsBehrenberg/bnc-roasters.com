@@ -4,8 +4,6 @@ import React from "react"
 import styled from "@emotion/styled"
 import Logo from "../images/logo_white.png"
 
-import { useShoppingCart } from "use-shopping-cart"
-
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 1100px;
@@ -68,8 +66,6 @@ const LogoContainer = styled(Link)`
 `
 
 const Header = ({ siteTitle }) => {
-  const { cartCount } = useShoppingCart()
-
   return (
     <header>
       <Wrapper>
@@ -99,8 +95,7 @@ const Header = ({ siteTitle }) => {
               </clipPath>
             </defs>
           </svg>
-
-          <span>{cartCount}</span>
+          <span>カート</span>
         </CheckoutLink>
       </Wrapper>
     </header>

@@ -49,7 +49,7 @@ const BackButton = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span>Go Back</span>
+      <span>戻る</span>
     </StyledLink>
   )
 }
