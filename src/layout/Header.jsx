@@ -53,6 +53,7 @@ const CheckoutLink = styled(Link)`
 const Title = styled.h1`
   text-align: center;
   letter-spacing: 0.2em;
+  font-family: "Neuton";
 
   @media screen and (max-width: 450px) {
     display: none;
