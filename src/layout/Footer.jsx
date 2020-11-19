@@ -15,7 +15,7 @@ const Container = styled.footer`
     color: #fff;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 750px) {
     flex-direction: column-reverse;
 
     div:nth-of-type(2) {
@@ -43,9 +43,24 @@ const Copyright = styled.div`
 
 const FooterMenu = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
+  text-align: center;
   & > *:not(:last-child) {
     margin-right: 3em;
+
+    @media screen and (max-width: 500px) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+
+    & > *:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
   }
 
   z-index: 1;
