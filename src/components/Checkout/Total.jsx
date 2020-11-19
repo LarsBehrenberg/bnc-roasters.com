@@ -69,7 +69,7 @@ const Container = styled.div`
 
   .shipping_price_textbox {
     margin: 1em 0;
-    line-height: 1.3em;
+    line-height: 1.5em;
   }
 `
 
@@ -118,10 +118,6 @@ const Total = ({ updateShippingState, currentShippingState }) => {
     return totalPrice
   }
 
-  console.log(
-    Object.keys(shippingOptions)[Object.keys(shippingOptions).length - 1]
-  )
-
   const addShippingFee = selectArea => {
     const currentArea = selectArea || area
     const currentCount = setCorrectCountForShipping()
@@ -156,8 +152,10 @@ const Total = ({ updateShippingState, currentShippingState }) => {
 
   return (
     <Container>
+      {/* TOTAL PRICE */}
       <div className="total_divider" />
-      <h2>{`Total: ¥${newTotalPrice().toLocaleString()}`}</h2>
+      <h2>{`小計 (税込) : ¥${newTotalPrice().toLocaleString()}`}</h2>
+      {/* SHIPPING CALCULATION */}
       <select
         name="shipping-select"
         id="shipping-select"
@@ -171,31 +169,43 @@ const Total = ({ updateShippingState, currentShippingState }) => {
           updateShippingState(false)
         }}
       >
-        {Object.keys(shippingOptions).map(option => (
-          <option key={option} value={option}>{`${option}`}</option>
-        ))}
+        {Object.entries(shippingOptions).map(([key, value]) => {
+          return <option key={key} value={key}>{`${value.name}`}</option>
+        })}
       </select>
-      <button onClick={() => addShippingFee()}>Calculate</button>
+      <button onClick={() => addShippingFee()}>計算</button>
       <div className="shipping_price_textbox">
         {currentShippingState ? (
           area !==
           Object.keys(shippingOptions)[
             Object.keys(shippingOptions).length - 1
           ] ? (
-            <p>Your shipping fee: ¥{price.toLocaleString()}</p>
+            <p style={{ textDecoration: "underline" }}>
+              送料: ¥{price.toLocaleString()}
+            </p>
           ) : (
             <p>
-              Localy Delivery in Haramura/Fujimi is free. <br /> Please contact
-              us for this under{" "}
+              原村・富士見への配達は無料で行います{" "}
+              <span role="img" aria-label="delivery">
+                🚚
+              </span>
+              <br />
               <a href="mailto:bearandgirl@gmail.com" style={{ color: "white" }}>
-                bearandgirl@gmail.com
-              </a>
+                coffee@bearandchi.com
+              </a>{" "}
+              までお問い合わせください
             </p>
           )
         ) : (
-          <p>Please calculate your shipping fee first</p>
+          <p>
+            送料を先に計算してください{" "}
+            <span role="img" aria-label="calculate">
+              🧮
+            </span>
+          </p>
         )}
       </div>
+      {/* PROCEED TO CHECKOUT BUTTON */}
       <button onClick={() => toCheckout()}>
         <svg
           width="20"
@@ -211,8 +221,9 @@ const Total = ({ updateShippingState, currentShippingState }) => {
             fill="#565656"
           />
         </svg>
-        Proceed to checkout
+        ご購入手続きへ進む
       </button>
+      {/* INVISIBLE MODAL */}
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
@@ -220,12 +231,20 @@ const Total = ({ updateShippingState, currentShippingState }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2>ちょっと待って 🙋🏻‍♀️</h2>
+        <h2>
+          ちょっと待って{" "}
+          <span role="img" aria-label="wait">
+            🙋🏻‍♀️
+          </span>
+        </h2>
         <div>
           <p>
-            計算し忘れないで 🧮
+            送料を計算し忘れないで{" "}
+            <span role="img" aria-label="calculate">
+              🧮
+            </span>
             <br />
-            購入前に、送料を計算して下さい！
+            購入前に、<b>「計算」</b>のボタンを押して下さい！
           </p>
         </div>
         <button className="modal_close_button" onClick={() => setIsOpen(false)}>

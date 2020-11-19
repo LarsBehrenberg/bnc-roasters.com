@@ -34,9 +34,9 @@ const Cart = () => {
 
   return (
     <CartContainer>
-      <h1 className="checkout_title">Your current cart:</h1>
+      <h1 className="checkout_title">ショッピングカート</h1>
       <p className="checkout_table_price_header">
-        <span>Price</span>
+        <span>価格</span>
       </p>
       <Items updateShippingState={state => setShippingState(state)} />
       <Total

@@ -19,6 +19,7 @@ const Product = ({ data }) => {
     name,
     image,
     slug: metadata.slug,
+    roast: metadata.roast,
   }
 
   return (
@@ -45,6 +46,7 @@ export const query = graphql`
         name
         metadata {
           slug
+          roast
         }
       }
     }

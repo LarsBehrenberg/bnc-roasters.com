@@ -77,13 +77,13 @@ const Footer = () => {
     <Container>
       <Copyright>
         <img src={Logo} alt="BnC Coffee Roaster" />
-        <span>&copy; 2020 BnC Roasters</span>
+        <span>&copy; {new Date().getFullYear()} BnC Roasters</span>
       </Copyright>
       <FooterMenu>
-        <Link to="/">Home</Link>
-        <Link to="/legal">Legal</Link>
-        <a href="mailto:info@larsbehrenberg.com" className="mailtoui">
-          Contact
+        <Link to="/">ホーム</Link>
+        <Link to="/legal">特定商取引に関する法律に基づく表示</Link>
+        <a href="mailto:coffee@bearandchi.com" className="mailtoui">
+          お問い合わせ
         </a>
       </FooterMenu>
       <Shadow />

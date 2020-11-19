@@ -71,21 +71,28 @@ const Description = ({ product }) => {
     <Container>
       <BackButton />
       <h1>{product.name}</h1>
-      <h5>{`¥${product.price} / 200g`}</h5>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mi, eu
-        fringilla diam fringilla phasellus dignissim. Tempus scelerisque felis
-        et sit sagittis in integer. Urna dui ornare imperdiet facilisis sem
-        aliquet justo. Justo, morbi eu laoreet egestas semper.
-      </p>
-      <p>
-        t sit sagittis in integer. Urna dui ornare imperdiet facilisis sem
-        aliquet justo. Justo, morbi eu laoreet egestas semper.
-      </p>
-      <p>
-        Urna dui ornare imperdiet facilisis sem aliquet justo. Justo, morbi eu
-        laoreet egestas semper
-      </p>
+      <h5>{`¥${product.price.toLocaleString()} / 200g ${product.roast}`}</h5>
+      {product.name === "ココナッツ コーヒー" ? (
+        <>
+          {/* <p>（中~深煎り）</p> */}
+          <p>
+            コロンビアの地域は、カリブ海と太平洋、二つの海に面しています。南北に走るアンデス山脈によって寒暖差が大きいこと、雨季と乾季のバランスがよく、火山灰を多く含む土壌となっていることから、絶好の土地が広く続いているため、コロンビアはコーヒーの生産国として有名です。
+          </p>
+          <p>
+            ナチュラルな甘さと重量感のあるコク、香気に優れ独特のフルーツのような酸味を持ち、バランスの良いマイルドなコーヒーとして基本の味です。
+          </p>
+        </>
+      ) : (
+        <>
+          <p>
+            アフリカ最高峰のキリマンジャロ地域は、タンザニア北部にある標高が5,895mの独立峰です。別名が「神の家」と呼ばれ、神聖な山でもあります。豆は、キリマンジャロ山の麓の町、アルーシャやモシ近くの、標高1,500mから2,500m付近で栽培されています。標高が高いので寒暖差が大きく、栽培されるコーヒー豆は実が締まり、水分が多く、硬い豆に育ちます。
+          </p>
+          <p>
+            強い酸味と苦味がバランス良く、大自然の恵みを感じられるコーヒーです。香ばしいコーヒー独特の心地よい香りと、濃厚なコクが特徴です。すっきりした口当たりで後味がよく、キレがあるのでストレートで飲むことをおすすめします。
+          </p>
+        </>
+      )}
+
       <AddToCartButton onClick={() => addItemAndProceed(item)}>
         <svg
           width="20"
@@ -119,7 +126,7 @@ const Description = ({ product }) => {
           </defs>
         </svg>
 
-        <span>Add to cart</span>
+        <span>カートに入れる</span>
       </AddToCartButton>
     </Container>
   )

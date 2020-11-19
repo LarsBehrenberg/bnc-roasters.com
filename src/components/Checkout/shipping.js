@@ -1,5 +1,6 @@
 export const shippingOptions = {
   Kansai: {
+    name: "関西",
     2: {
       id: "price_1HnbQVEfQBPneixJ0XpaFYP2",
       price: 370,
@@ -18,6 +19,7 @@ export const shippingOptions = {
     },
   },
   Kanto: {
+    name: "関東",
     2: {
       id: "price_1HnbQVEfQBPneixJ0XpaFYP2",
       price: 370,
@@ -36,6 +38,7 @@ export const shippingOptions = {
     },
   },
   Chubu: {
+    name: "中部",
     2: {
       id: "price_1HnbQVEfQBPneixJ0XpaFYP2",
       price: 370,
@@ -54,6 +57,7 @@ export const shippingOptions = {
     },
   },
   "Japan rest": {
+    name: "その他の地域",
     2: {
       id: "price_1HnbQVEfQBPneixJ0XpaFYP2",
       price: 370,
@@ -71,7 +75,9 @@ export const shippingOptions = {
       price: 1480,
     },
   },
-  "Local Delivery": { 0: 0 },
+  "Local Delivery": {
+    name: "原村・富士見",
+  },
 }
 
 export const allShippingIds = [

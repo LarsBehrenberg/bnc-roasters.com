@@ -101,6 +101,12 @@ const Items = ({ updateShippingState }) => {
     setItemQuantity(sku, event)
   }
 
+  const remove = (sku, state) => {
+    updateShippingState(state)
+
+    removeItem(sku)
+  }
+
   const cart = []
   // Note: Object.keys().map() takes 2x as long as a for-in loop
   for (const sku in cartDetails) {
@@ -110,10 +116,7 @@ const Items = ({ updateShippingState }) => {
     const options = []
     for (let quantity = 1; quantity <= 5; ++quantity)
       options.push(
-        <option
-          key={quantity}
-          value={quantity}
-        >{`Quantity: ${quantity}`}</option>
+        <option key={quantity} value={quantity}>{`数量： ${quantity}`}</option>
       )
 
     // all of your basic product data still exists (i.e. name, image, price)
@@ -130,7 +133,7 @@ const Items = ({ updateShippingState }) => {
 
             <div className="checkout_item_text">
               <h2>{cartEntry.name}</h2>
-              <h5>{`¥${cartEntry.price} / 200g`}</h5>
+              <h5>{`¥${cartEntry.price.toLocaleString()} / 200g`}</h5>
               <select
                 id="quantity-select"
                 className="checkout_item_select"
@@ -146,10 +149,10 @@ const Items = ({ updateShippingState }) => {
               </select>
 
               <button
-                onClick={() => removeItem(cartEntry.sku)}
+                onClick={() => remove(cartEntry.sku, false)}
                 aria-label={`Remove all ${cartEntry.name} from your cart`}
               >
-                Remove
+                削除
               </button>
             </div>
 
@@ -157,7 +160,7 @@ const Items = ({ updateShippingState }) => {
           </div>
           <div className="checkout_item_price">
             <h2>{cartEntry.formattedValue}</h2>
-            <h5>{`${cartEntry.quantity} x 200g package`}</h5>
+            <h5>{`${cartEntry.quantity} 袋`}</h5>
           </div>
         </ItemContainer>
       )
