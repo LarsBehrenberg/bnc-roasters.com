@@ -35,7 +35,7 @@ html {
     transition: all 3s linear;
 }
 .ReactModal__Overlay {
-    background-color: #00000050 !important;
+    background-color: #00000098 !important;
     transition: background-color 1s linear;
 }
 
