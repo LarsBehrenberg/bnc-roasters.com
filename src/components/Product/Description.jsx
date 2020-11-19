@@ -49,7 +49,7 @@ const AddToCartButton = styled.button`
 `
 
 const Description = ({ product }) => {
-  const { addItem } = useShoppingCart()
+  const { addItem, cartDetails } = useShoppingCart()
 
   const item = {
     name: product.name,
@@ -60,7 +60,9 @@ const Description = ({ product }) => {
   }
 
   const addItemAndProceed = item => {
-    addItem(item)
+    if (!cartDetails[product.id]) {
+      addItem(item)
+    }
     navigate("/checkout")
   }
 
@@ -91,7 +93,7 @@ const Description = ({ product }) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <path
               d="M19.408 4.11941C18.987 4.01326 18.5446 4.26785 18.4393 4.69246L16.692 11.6347H6.54683L4.14668 1.80468C4.06282 1.44393 3.74707 1.18933 3.368 1.18933H0.800078C0.357686 1.18933 0 1.55008 0 1.99626C0 2.44245 0.357686 2.8032 0.800078 2.8032H2.75792L5.99923 16.1354C6.08311 16.4961 6.39885 16.7508 6.77793 16.7508H16.0186C16.4609 16.7508 16.8187 16.39 16.8187 15.9438C16.8187 15.4976 16.4609 15.1369 16.0186 15.1369H7.38796L6.92503 13.2477H17.2815C17.6393 13.2477 17.955 12.9931 18.0603 12.653L19.9762 5.09453C20.0814 4.67075 19.8289 4.22539 19.4079 4.11924L19.408 4.11941Z"
               fill="#565656"
