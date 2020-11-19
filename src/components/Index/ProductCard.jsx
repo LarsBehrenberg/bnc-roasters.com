@@ -29,19 +29,19 @@ const StyledLink = styled(Link)`
   }
 
   .product_card_content {
-    height: 100%;
-    width: 100%;
     padding: 1.5rem;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     color: white;
 
-    @media screen and (max-width: 550px) {
-      margin-top: auto;
-      position: absolute;
-      bottom: 0;
-    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    border-radius: 0.4rem;
 
     * {
       margin: 0;
@@ -60,25 +60,24 @@ const StyledLink = styled(Link)`
   .product_card_background {
     position: absolute;
     top: 0;
+    overflow: hidden;
+    right: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    bottom: 0;
+    z-index: 1;
 
     background: #ffffff80;
-
-    z-index: -1;
 
     &,
     img {
       border-radius: 2em;
     }
 
-    img {
-      /* border-radius: 3em 3em 0 0; */
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
+    > div {
+      position: static !important;
+    }
+    > div > div {
+      position: static !important;
     }
   }
 `
@@ -121,6 +120,7 @@ export default function ProductCard({ product }) {
         <Img
           fluid={product.image.childImageSharp.fluid}
           alt={`Image of ${product.name}`}
+          className="product_card_background_image"
           style={{ objectFit: "cover", height: "100%", width: "100%" }}
         />
         {/* <img src={product.image} alt={`Image of ${product.name}`} /> */}
