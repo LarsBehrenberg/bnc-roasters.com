@@ -12,10 +12,7 @@ const IndexPage = ({ data }) => {
     // price: node.unit_amount,
     image: node.image[0],
     // currency: "JPY",
-    slug: node.name
-      .toLowerCase()
-      .replace(/[^\w ]+/g, "")
-      .replace(/ +/g, "-"),
+    slug: node.metadata.slug,
   }))
 
   return (
@@ -40,6 +37,9 @@ export const query = graphql`
       nodes {
         id
         name
+        metadata {
+          slug
+        }
         image: localFiles {
           childImageSharp {
             fluid(maxWidth: 400) {

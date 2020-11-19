@@ -8,7 +8,7 @@ const Product = ({ data }) => {
   const {
     id,
     price,
-    product: { name },
+    product: { name, metadata },
   } = data.productInfo
 
   const { image } = data.productImage
@@ -18,6 +18,7 @@ const Product = ({ data }) => {
     price,
     name,
     image,
+    slug: metadata.slug,
   }
 
   return (
@@ -35,14 +36,19 @@ export default Product
 
 export const query = graphql`
   query productPage($pathSlug: String!) {
-    productInfo: stripePrice(product: { name: { eq: $pathSlug } }) {
+    productInfo: stripePrice(
+      product: { metadata: { slug: { eq: $pathSlug } } }
+    ) {
       id
       price: unit_amount
       product {
         name
+        metadata {
+          slug
+        }
       }
     }
-    productImage: stripeProduct(name: { eq: $pathSlug }) {
+    productImage: stripeProduct(metadata: { slug: { eq: $pathSlug } }) {
       image: localFiles {
         childImageSharp {
           fluid(maxWidth: 1200) {

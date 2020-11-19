@@ -57,6 +57,7 @@ const Description = ({ product }) => {
     price: product.price,
     currency: "JPY",
     image: product.image,
+    slug: product.slug,
   }
 
   const addItemAndProceed = item => {

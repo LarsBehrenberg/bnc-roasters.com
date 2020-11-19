@@ -23,7 +23,9 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
             ) {
               nodes {
                 product {
-                  slug: name
+                  metadata {
+                    slug
+                  }
                 }
               }
             }
@@ -36,21 +38,22 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
 
         const products = result.data.products.nodes
 
-        const stringToSlug = text =>
-          text
-            .toLowerCase()
-            .replace(/[^\w ]+/g, "")
-            .replace(/ +/g, "-")
         // create product pages
-        products.forEach(({ product: { slug } }) => {
-          createPage({
-            path: stringToSlug(slug),
-            component: productPageTemplate,
-            context: {
-              pathSlug: slug,
+        products.forEach(
+          ({
+            product: {
+              metadata: { slug },
             },
-          })
-        })
+          }) => {
+            createPage({
+              path: slug,
+              component: productPageTemplate,
+              context: {
+                pathSlug: slug,
+              },
+            })
+          }
+        )
       })
     )
   })
