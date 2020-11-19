@@ -13,7 +13,10 @@ const ItemContainer = styled.article`
 
   .checkout_item_info {
     display: flex;
-    gap: 1em;
+
+    > *:first-of-type {
+      margin-right: 1em;
+    }
     .checkout_item_image_container {
       width: 200px;
 
@@ -55,8 +58,7 @@ const ItemContainer = styled.article`
   @media screen and (max-width: 600px) {
     flex-direction: column;
 
-    /* justify-content: center; */
-    gap: 1rem;
+    margin-bottom: 1.5rem;
     align-items: initial;
 
     .checkout_item_info {

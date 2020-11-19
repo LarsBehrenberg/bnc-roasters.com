@@ -43,7 +43,11 @@ const Copyright = styled.div`
 
 const FooterMenu = styled.div`
   display: flex;
-  gap: 3em;
+
+  & > *:not(:last-child) {
+    margin-right: 3em;
+  }
+
   z-index: 1;
 
   a {
