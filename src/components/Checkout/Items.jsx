@@ -171,8 +171,9 @@ const Items = ({ updateShippingState }) => {
     cart
   ) : (
     <Placeholder>
-      You currently have no items in your cart. <br /> Click{" "}
-      <Link to="/">here</Link> to shop more.
+      お客様のカートに商品はありません。
+      <br />
+      <Link to="/">「お買い物を続ける」</Link> を押してください。
     </Placeholder>
   )
 }
