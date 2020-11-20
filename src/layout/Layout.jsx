@@ -4,12 +4,22 @@ import PropTypes from "prop-types"
 import Header from "./Header"
 import Background from "./Background"
 import Footer from "./Footer"
+import SEO from "./SEO"
 import "normalize.css"
 import "../styles/index.css"
 
-const Layout = ({ children, backgroundImage, backgroundClassName }) => {
+import { seoDescriptions } from "../../config/seo-descriptions"
+
+const Layout = ({
+  children,
+  backgroundImage,
+  backgroundClassName,
+  seoTitle = seoDescriptions.index.title,
+  seoDescription = seoDescriptions.index.description,
+}) => {
   return (
     <>
+      <SEO title={seoTitle} description={seoDescription} />
       <Header siteTitle={`BnC Roasters`} />
       <div
         style={{
@@ -19,16 +29,6 @@ const Layout = ({ children, backgroundImage, backgroundClassName }) => {
         }}
       >
         <main>{children}</main>
-        {/* <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer> */}
-
         <Footer />
       </div>
       <Background image={backgroundImage} className={backgroundClassName} />

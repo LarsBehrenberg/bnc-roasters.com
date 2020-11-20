@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout, SEO } from "layout"
+import { Layout } from "layout"
 import { Description } from "components"
+
+import { seoDescriptions } from "../../config/seo-descriptions"
 
 const Product = ({ data }) => {
   const {
@@ -26,8 +28,9 @@ const Product = ({ data }) => {
     <Layout
       backgroundImage={image[0].childImageSharp.fluid}
       backgroundClassName="product_page"
+      seoTitle={seoDescriptions[metadata.slug]}
+      seoDescription={seoDescriptions[metadata.slug]}
     >
-      <SEO title={name} />
       <Description product={productInfo} />
     </Layout>
   )

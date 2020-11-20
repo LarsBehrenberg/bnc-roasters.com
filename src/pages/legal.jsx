@@ -1,7 +1,9 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-import { Layout, SEO } from "layout"
+import { Layout } from "layout"
+
+import { seoDescriptions } from "../../config/seo-descriptions"
 
 const Container = styled.div`
   max-width: 600px;
@@ -14,8 +16,10 @@ const Container = styled.div`
 `
 
 const LegalPage = () => (
-  <Layout>
-    <SEO title="Legal" />
+  <Layout
+    seoTitle={seoDescriptions.legal.title}
+    seoDescription={seoDescriptions.legal.description}
+  >
     <Container>
       <h1>Website disclaimer sample</h1>
       <p>

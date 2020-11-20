@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout, SEO } from "layout"
+import { Layout } from "layout"
 
 import { ProductCard, ProductList, Intro } from "components"
 
@@ -17,7 +17,6 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
       <Intro />
       {/* Renders the products */}
       <ProductList>
