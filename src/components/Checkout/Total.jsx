@@ -180,9 +180,19 @@ const Total = ({ updateShippingState, currentShippingState }) => {
           Object.keys(shippingOptions)[
             Object.keys(shippingOptions).length - 1
           ] ? (
-            <p style={{ textDecoration: "underline" }}>
-              送料: ¥{price.toLocaleString()}
-            </p>
+            <>
+              <p style={{ textDecoration: "underline" }}>
+                送料: ¥{price.toLocaleString()}
+              </p>
+              <p>
+                ご注文後、焙煎しますので、
+                <br />
+                5日から7日以内に、お届け{" "}
+                <span role="img" aria-label="package">
+                  📦
+                </span>
+              </p>
+            </>
           ) : (
             <p>
               原村・富士見への配達は無料で行います{" "}
