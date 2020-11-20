@@ -28,8 +28,8 @@ const Product = ({ data }) => {
     <Layout
       backgroundImage={image[0].childImageSharp.fluid}
       backgroundClassName="product_page"
-      seoTitle={seoDescriptions[metadata.slug]}
-      seoDescription={seoDescriptions[metadata.slug]}
+      seoTitle={seoDescriptions[metadata.slug].title}
+      seoDescription={seoDescriptions[metadata.slug].description}
     >
       <Description product={productInfo} />
     </Layout>
