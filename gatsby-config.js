@@ -19,16 +19,19 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
-        name: `bnc-roasters`,
-        short_name: `bnc`,
-        start_url: `/`,
-        background_color: `#00000020`,
-        theme_color: `#00000020`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        name: config.title,
+        short_name: config.shortName,
+        description: config.description,
+        start_url: config.pathPrefix,
+        // banner: config.banner,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: "standalone",
+        icon: config.favicon,
       },
     },
     // Styling and font plugins

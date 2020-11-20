@@ -7,9 +7,9 @@ module.exports = {
   url: "https://coffee.bearandchi.com", // Domain of your site. No trailing slash!
   siteUrl: "https://coffee.bearandchi.com", // url + pathPrefix
   siteLanguage: "jp", // Language Tag on <html> element
-  logo: "src/images/logo_black.png", // Used for SEO
-  banner: "src/images/banner.jpg", // Banner for SEO
-  favicon: "src/images/favicon.png", // Used for manifest favicon generation
+  logo: "/seo/logo_black.png", // Used for SEO
+  banner: "/seo/banner.jpg", // Banner for SEO
+  favicon: "static/seo/favicon.png", // Used for manifest favicon generation
   shortName: "bncroasters", // shortname for manifest. MUST be shorter than 12 characters
   author: "Chihiro Hori", // Author for schemaORGJSONLD
   themeColor: "#ffffff",
