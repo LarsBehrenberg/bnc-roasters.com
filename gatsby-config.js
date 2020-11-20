@@ -9,7 +9,7 @@ module.exports = {
     ...config,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    // Data Sourcing
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,6 +19,8 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    // SEO
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-manifest",
@@ -50,6 +52,14 @@ module.exports = {
         secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
         auth: false,
+      },
+    },
+    // Analytics
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        // your google analytics tracking id
+        trackingId: `G-ZK6G6R870M`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
