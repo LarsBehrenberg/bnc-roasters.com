@@ -8,8 +8,8 @@ export const wrapRootElement = ({ element }) => {
   return (
     <CartProvider
       stripe={stripePromise}
-      successUrl={`http://localhost:8000`}
-      cancelUrl={`http://localhost:8000`}
+      successUrl={`https://coffee.bearandchi.com/success`}
+      cancelUrl={`https://coffee.bearandchi.com/cancellation`}
       currency={"JPY"}
       allowedCountries={["JP"]}
       billingAddressCollection={true}
