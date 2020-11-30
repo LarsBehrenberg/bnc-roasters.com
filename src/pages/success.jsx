@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Layout } from "layout"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 
 import { seoDescriptions } from "../../config/seo-descriptions"
 

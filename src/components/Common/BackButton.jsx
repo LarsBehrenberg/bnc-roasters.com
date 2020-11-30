@@ -24,9 +24,9 @@ const StyledLink = styled(Link)`
   }
 `
 
-const BackButton = () => {
+const BackButton = ({ to = "/" }) => {
   return (
-    <StyledLink to="/">
+    <StyledLink to={to}>
       <svg
         width="24"
         height="24"

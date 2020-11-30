@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
 import Modal from "react-modal"
+import { Link } from "gatsby"
 import { useShoppingCart } from "use-shopping-cart"
 import { shippingOptions, allShippingIds } from "./shipping"
 
@@ -207,12 +208,19 @@ const Total = ({ updateShippingState, currentShippingState }) => {
             </p>
           )
         ) : (
-          <p>
-            送料を先に計算してください{" "}
-            <span role="img" aria-label="calculate">
-              🧮
-            </span>
-          </p>
+          <>
+            <p>
+              送料を先に計算してください{" "}
+              <span role="img" aria-label="calculate">
+                🧮
+              </span>
+              <br />
+              For detailed shipping information,{" "}
+              <Link to="/shipping" style={{ color: "#fff" }}>
+                click here
+              </Link>
+            </p>
+          </>
         )}
       </div>
       {/* PROCEED TO CHECKOUT BUTTON */}
