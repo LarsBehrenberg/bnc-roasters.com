@@ -2,7 +2,6 @@ import React from "react"
 import styled from "@emotion/styled"
 import { Layout } from "layout"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
 
 import { seoDescriptions } from "../../config/seo-descriptions"
 
@@ -24,7 +23,7 @@ const Container = styled.div`
   justify-content: center;
 `
 
-const SuccessPage = ({ data }) => (
+const SuccessPage = () => (
   <Layout
     seoTitle={seoDescriptions.success.title}
     seoDescription={seoDescriptions.success.description}
@@ -38,22 +37,3 @@ const SuccessPage = ({ data }) => (
 )
 
 export default SuccessPage
-
-export const query = graphql`
-  query SuccessPage {
-    product: stripeProduct(id: { eq: "prod_ILXEFxhY9phHOO" }) {
-      id
-      name
-      metadata {
-        slug
-      }
-      image: localFiles {
-        childImageSharp {
-          fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  }
-`
