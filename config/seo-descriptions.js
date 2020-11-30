@@ -24,4 +24,9 @@ export const seoDescriptions = {
     description:
       "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
   },
+  privacy: {
+    title: "プライバシーポリシー",
+    description:
+      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+  },
 }

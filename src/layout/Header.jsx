@@ -13,7 +13,18 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  color: #fff;
+  &,
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &.title-link {
+      transition: all 0.2s ease-out;
+      :hover {
+        opacity: 0.7;
+      }
+    }
+  }
 
   * {
     margin: 0;
@@ -73,7 +84,9 @@ const Header = ({ siteTitle }) => {
         <LogoContainer to="/">
           <img src={Logo} alt="BnC Roasters" />
         </LogoContainer>
-        <Title>{siteTitle}</Title>
+        <Link to="/" className="title-link">
+          <Title>{siteTitle}</Title>
+        </Link>
         <CheckoutLink to="/checkout">
           <svg
             width="30"

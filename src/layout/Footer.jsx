@@ -15,7 +15,7 @@ const Container = styled.footer`
     color: #fff;
   }
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 950px) {
     flex-direction: column-reverse;
 
     div:nth-of-type(2) {
@@ -49,12 +49,12 @@ const FooterMenu = styled.div`
   & > *:not(:last-child) {
     margin-right: 3em;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 950px) {
       margin-bottom: 1rem;
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 950px) {
     flex-direction: column;
 
     & > *:not(:last-child) {
@@ -96,6 +96,7 @@ const Footer = () => {
       </Copyright>
       <FooterMenu>
         <Link to="/">ホーム</Link>
+        <Link to="/privacy-policy">プライバシーポリシー</Link>
         <Link to="/legal">特定商取引に関する法律に基づく表示</Link>
         <a href="mailto:coffee@bearandchi.com" className="mailtoui">
           お問い合わせ
