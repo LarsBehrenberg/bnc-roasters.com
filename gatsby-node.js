@@ -19,7 +19,10 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
         `
           query {
             products: allStripePrice(
-              filter: { product: { id: { ne: "prod_IOOC16S3x0U5pB" } } }
+              filter: {
+                active: { eq: true }
+                product: { id: { ne: "prod_IUMGplf4lE0j7A" } }
+              }
             ) {
               nodes {
                 product {

@@ -32,7 +32,9 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPage {
-    products: allStripeProduct(filter: { id: { ne: "prod_IOOC16S3x0U5pB" } }) {
+    products: allStripeProduct(
+      filter: { id: { ne: "prod_IUMGplf4lE0j7A" }, active: { eq: true } }
+    ) {
       nodes {
         id
         name

@@ -41,6 +41,7 @@ export default Product
 export const query = graphql`
   query productPage($pathSlug: String!) {
     productInfo: stripePrice(
+      active: { eq: true }
       product: { metadata: { slug: { eq: $pathSlug } } }
     ) {
       id
