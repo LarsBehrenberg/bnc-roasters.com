@@ -16,6 +16,11 @@ const Container = styled.div`
     color: #fff;
   }
 
+  h1,
+  h4 {
+    text-align: center;
+  }
+
   display: flex;
   flex-direction: column;
 
@@ -29,8 +34,12 @@ const SuccessPage = () => (
     seoDescription={seoDescriptions.success.description}
   >
     <Container>
-      <h1>Thank you! Your payment went through.</h1>
-      <h4>We will notify you once we have shipped the beans.</h4>
+      <h1>
+        ありがとうございます！
+        <br />
+        お支払いが確認できました。
+      </h1>
+      <h4>配送の準備が完了しましたら、ご連絡いたします。</h4>
       <Link to="/">BnC Roasters トップページ</Link>
     </Container>
   </Layout>

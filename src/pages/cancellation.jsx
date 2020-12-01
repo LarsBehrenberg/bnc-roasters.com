@@ -16,6 +16,11 @@ const Container = styled.div`
     color: #fff;
   }
 
+  h1,
+  h4 {
+    text-align: center;
+  }
+
   display: flex;
   flex-direction: column;
 
@@ -29,12 +34,13 @@ const CancelPage = () => (
     seoDescription={seoDescriptions.success.description}
   >
     <Container>
-      <h1>Mhh, something went wrong.</h1>
+      <h1>ご注文の確認ができませんでした。</h1>
       <h4>
-        Please try again and if that didn't help, notify us directly at:{" "}
+        申し訳ありませんが、もう一度ホームページからアクセスしてください。再度ご注文できなかった場合は、こちらに（
         <a href="mailto:coffee@bearandchi.com" class="mailtoui">
           coffee@bearandchi.com
         </a>
+        ）ご連絡ください。
       </h4>
       <Link to="/">BnC Roasters トップページ</Link>
     </Container>
