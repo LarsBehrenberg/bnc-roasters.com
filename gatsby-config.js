@@ -21,7 +21,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     // SEO
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        exclude: [`/success`, `/cancellation`, `/404`],
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

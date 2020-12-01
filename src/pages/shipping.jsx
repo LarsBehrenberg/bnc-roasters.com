@@ -15,6 +15,11 @@ const Title = styled.div`
     line-height: 1.5em;
   }
 
+  .mobile-hint {
+    border: 1px solid white;
+    padding: 1rem;
+  }
+
   @media screen and (min-width: 450px) {
     .mobile-hint {
       display: none;
@@ -76,11 +81,11 @@ const Styles = styled.div`
 `
 
 const columns = [
-  { Header: "Area", accessor: "col1" },
-  { Header: "200 - 400g", accessor: "col2" },
-  { Header: "600 - 800g", accessor: "col3" },
-  { Header: "800 - 1000g", accessor: "col4" },
-  { Header: "1200g or more", accessor: "col5" },
+  { Header: "地域", accessor: "col1" },
+  { Header: "１〜２袋", accessor: "col2" },
+  { Header: "３〜４袋", accessor: "col3" },
+  { Header: "５〜９袋", accessor: "col4" },
+  { Header: "１０袋", accessor: "col5" },
 ]
 
 const data = [
@@ -119,18 +124,28 @@ const ShippingPage = () => {
       >
         <Title>
           <BackButton to="/checkout" />
-          <h1>送料</h1>
+          <h1>地域別 配送料</h1>
           <p>
-            Please find the all the different shipping options here. If you have
-            further questions please feel free to contact us anytime at{" "}
+            地域別の配送料はこちらをご覧ください。ご質問があれば、こちらのメールアドレス（
             <a href="mailto:coffee@bearandchi.com" className="mailtoui">
               coffee@bearandchi.com
             </a>
+            ）までご連絡ください。
           </p>
-          <p></p>
+          <p>
+            お届け方法は「JP Post
+            郵便局」となります。配送料は以下の表の通りですが、その他の情報は
+            <a
+              href="https://www.post.japanpost.jp/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              こちらのサイト
+            </a>
+            をご覧ください。1回、1配送先ごとに送料が必要です。複数のお届け先へお届けの場合は、その都度送料が発生致します。海外へのお届け（海外からのご注文含む）は承っておりません。
+          </p>
           <p className="mobile-hint">
-            On mobile devices you might have to scroll horizontally to see all
-            pricing options.
+            携帯からのアクセスの場合、左右にスワイプして値段をご確認ください。
           </p>
         </Title>
         <Styles>

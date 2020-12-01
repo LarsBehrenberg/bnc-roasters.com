@@ -22,26 +22,26 @@ export const seoDescriptions = {
   legal: {
     title: "特定商取引に関する法律に基づく表示",
     description:
-      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+      "特定商取引法（正式名称「特定商取引に関する法律」）とは、事業者による違法・悪質な勧誘行為等を防止し、消費者の利益を守ることを目的とする法律です。 具体的には、訪問販売や通信販売等、以下に挙げる消費者トラブルを生じやすい取引類型を対象として、事業者が厳守すべきルールやクーリングオフ等の消費者を保護するルールを定めた日本の法律です。",
   },
   privacy: {
     title: "プライバシーポリシー",
     description:
-      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+      "「プライバシーポリシー」とは、個人情報について、その収集や活用、管理、保護などに関する取り扱いの方針を明文化したものをいいます。すべてのウェブサイトに必要なものではありませんが、個人情報を収集するサイトの場合は、プライバシーポリシーの制定と明記が必要とされています。",
   },
   success: {
     title: "プライバシーポリシー",
     description:
-      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+      "私たちが焙煎を始めたのは、2020年４月、長野県へ引っ越して来てからです。豊かな自然の中で生活をしていると、自分たちの手で作れるものは手作りしたいと思うようになりました。そして、そんな思いを込めて始めたのがコーヒー豆の自家焙煎です。",
   },
   cancel: {
     title: "プライバシーポリシー",
     description:
-      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+      "私たちが焙煎を始めたのは、2020年４月、長野県へ引っ越して来てからです。豊かな自然の中で生活をしていると、自分たちの手で作れるものは手作りしたいと思うようになりました。そして、そんな思いを込めて始めたのがコーヒー豆の自家焙煎です。",
   },
   shipping: {
     title: "プライバシーポリシー",
     description:
-      "I don't like art. Not most of it. But I have always loved impressionism. Always. I remember having posters of impressionist paintings on my childhood bedroom...",
+      "配送方法についての情報と配送料金についてはこちらのサイトを御覧ください。",
   },
 }

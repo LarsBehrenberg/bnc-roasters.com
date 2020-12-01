@@ -215,9 +215,9 @@ const Total = ({ updateShippingState, currentShippingState }) => {
                 🧮
               </span>
               <br />
-              For detailed shipping information,{" "}
+              配送料について詳しくは
               <Link to="/shipping" style={{ color: "#fff" }}>
-                click here
+                こちら
               </Link>
             </p>
           </>
