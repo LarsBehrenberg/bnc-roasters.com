@@ -20,6 +20,18 @@ const Container = styled.div`
   p {
     line-height: 24px;
 
+    &.grinded-beans-info {
+      font-style: italic;
+      border: 1px solid #fff;
+      padding: 0.5rem;
+      a {
+        color: #fff;
+        &:hover {
+          color: #ffffff80;
+        }
+      }
+    }
+
     @media screen and (min-width: 600px) {
       margin-right: 4rem;
     }
@@ -128,6 +140,15 @@ const Description = ({ product }) => {
           <span>カートに入れる</span>
         </AddToCartButton>
       </TitleContainer>
+      <p className="grinded-beans-info">
+        豆の状態は「豆のまま」の他に「中挽き（コーヒーメーカー用）」または「粉挽き（ペーパードリップ用）」をお選びいただけます。
+        <br />
+        「粉挽き」または「中挽き」をご希望の方は、Email:{" "}
+        <a href="mailto:coffee@bearandchi.com" className="mailtoui">
+          coffee@bearandchi.com
+        </a>{" "}
+        までご連絡ください。{" "}
+      </p>
       {product.name === "ココナッツ コーヒー" ? (
         <>
           <p>
