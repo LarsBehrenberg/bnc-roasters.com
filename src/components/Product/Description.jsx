@@ -149,7 +149,9 @@ const Description = ({ product }) => {
 
           <span>カートに入れる</span>
         </AddToCartButton> */}
-        <AddToCartButton type="button" disabled className="disabled">販売停止</AddToCartButton>
+        <AddToCartButton type="button" disabled className="disabled">
+          売り切れ
+        </AddToCartButton>
       </TitleContainer>
       <p className="grinded-beans-info">
         豆の状態は「豆のまま」の他に「中挽き（コーヒーメーカー用）」または「粉挽き（ペーパードリップ用）」をお選びいただけます。
