@@ -58,6 +58,16 @@ const AddToCartButton = styled.button`
   span {
     margin-left: 10px;
   }
+
+  &.disabled {
+    background: #e6e6e630;
+    color: #ffffff80;
+
+    &:hover {
+      transform: none;
+      cursor: default;
+    }
+  }
 `
 
 const TitleContainer = styled.div`
@@ -104,7 +114,7 @@ const Description = ({ product }) => {
             product.roast
           }`}</h5>
         </div>
-        <AddToCartButton onClick={() => addItemAndProceed(item)}>
+        {/* <AddToCartButton onClick={() => addItemAndProceed(item)}>
           <svg
             width="20"
             height="20"
@@ -138,7 +148,8 @@ const Description = ({ product }) => {
           </svg>
 
           <span>カートに入れる</span>
-        </AddToCartButton>
+        </AddToCartButton> */}
+        <AddToCartButton type="button" disabled className="disabled">販売停止</AddToCartButton>
       </TitleContainer>
       <p className="grinded-beans-info">
         豆の状態は「豆のまま」の他に「中挽き（コーヒーメーカー用）」または「粉挽き（ペーパードリップ用）」をお選びいただけます。
